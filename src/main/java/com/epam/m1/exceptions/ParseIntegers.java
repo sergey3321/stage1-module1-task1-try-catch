@@ -3,6 +3,7 @@ package com.epam.m1.exceptions;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.lang.*;
 
 /**
  * Complete the code, parse integers, calculate the sum of numbers in the WORDS, join strings with
@@ -10,8 +11,7 @@ import java.util.List;
  */
 public class ParseIntegers {
 
-    private static final List<String> WORDS =
-            Arrays.asList(
+    private static final List<String> WORDS = Arrays.asList(
                     "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
                             .split(" "));
 
@@ -19,6 +19,7 @@ public class ParseIntegers {
         Iterator<String> words = WORDS.iterator();
         int sum = 0;
         String justWords = "";
+        String a [] = new String[0];
         while (words.hasNext()) {
             String next = words.next();
             try {
@@ -26,7 +27,12 @@ public class ParseIntegers {
             } catch (NumberFormatException e) {
                 e.getMessage();
             }
+        }
 
+        for (String word : WORDS) {
+            if (word.matches("\\d+")) {
+                sum += Integer.parseInt(word);
+            }
         }
         System.out.println("Sum is " + sum);
         System.out.println("Just words:" + justWords);
